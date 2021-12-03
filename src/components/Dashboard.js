@@ -5,42 +5,50 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import {Products} from "../components/Products";
+import {Location} from "../components/Location";
+import {Families} from "../components/Families";
+import {Transaction} from "../components/Transaction";
 
 export const Dashboard = () => {
 
 
 
     return (<>
-        <h1>Dashboard</h1>
+      
         <div>
+            <Link className="btn btn-primary">LogOut</Link>
             <Router>
                 <div>
                     <nav>
                         <ul>
                             <li>
-                                <Link to="/">Products</Link>
+                                <Link to="/Products">Products</Link>
                             </li>
                             <li>
-                                <Link to="/">Locations</Link>
+                                <Link to="/Location">Locations</Link>
                             </li>
                             <li>
-                                <Link to="/">Families</Link>
+                                <Link to="/Families">Families</Link>
                             </li>
                             <li>
-                                <Link to="/">Transactions</Link>
+                                <Link to="/Transaction">Transactions</Link>
                             </li>
                         </ul>
                     </nav>
 
                     <Switch>
-                        <Route path="/">
-
+                        <Route path="/Products">
+                            <Products/>
                         </Route>
-                        <Route path="/">
-
+                        <Route path="/Location">
+                            <Location/>
                         </Route>
-                        <Route path="/">
-
+                        <Route path="/Families">
+                            <Families/>
+                        </Route>
+                        <Route path="/Transaction">
+                            <Transaction/>
                         </Route>
                     </Switch>
 

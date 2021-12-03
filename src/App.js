@@ -21,12 +21,9 @@ function App() {
         <Router>
           <div>
             <nav>
-              <ul>
-                <li>
-                  <Link to="/RegistrationForm">RegistrationForm</Link>
-                </li>
-
-              </ul>
+              
+                <Link to="/RegistrationForm">RegistrationForm</Link>
+              
             </nav>
 
             <Switch>

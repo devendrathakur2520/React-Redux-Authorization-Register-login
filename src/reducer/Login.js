@@ -1,8 +1,8 @@
-import { LOGIN } from "../action";
+import { LOGIN ,RESPONSE_STATUS} from "../action";
 
 const initialState = {
     data: { email: '', password: '' },
-
+    status:""
 }
 
 export default function Login(state = initialState, action) {
@@ -12,6 +12,11 @@ export default function Login(state = initialState, action) {
             return {
                 ...state,
                 data: action.payload,
+            }
+            case RESPONSE_STATUS:
+            return {
+                ...state,
+                status: action.payload,
             }
 
         default:

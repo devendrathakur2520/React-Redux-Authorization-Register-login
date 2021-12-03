@@ -1,13 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap'
-import { loginDetails } from "../thunk/Login";
-import { login } from '../action'
+import { LoginDetails } from "../thunk/Login";
+import { logDeatails, login } from '../action'
 import { useHistory } from "react-router";
 
 function LoginForm() {
   const dispatch = useDispatch();
   const loginData = useSelector((state) => state.Login.data)
+  const ResponseStatus=useSelector((state)=>state.Login.status)
   const history = useHistory();
   const { email, password } = loginData;
   const handleChange = (e) => {
@@ -16,9 +17,13 @@ function LoginForm() {
   }
   const submit = (e) => {
     e.preventDefault();
-    dispatch(loginDetails(loginData))
-    history.push("/Dashboard")
-
+    dispatch(LoginDetails(loginData))
+    if(ResponseStatus==200){
+      history.push("/Dashboard")
+    }
+    else{
+      alert("incorrect password ")
+    }
   }
 
   return (
@@ -29,7 +34,7 @@ function LoginForm() {
         <input type="text" name="email" value={email} onChange={handleChange} /><br /><br />
         Password:
         <input type="password" name="password" value={password} onChange={handleChange} /><br /><br />
-        <Button type="submit">submit</Button>
+        <Button type="submit">LogIn</Button>
       </div>
     </Form>
 

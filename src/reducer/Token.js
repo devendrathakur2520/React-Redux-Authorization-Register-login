@@ -1,9 +1,9 @@
 import { SET_TOKEN } from "../action";
 
 const initialState = {
-    token: [],
+    token: '',
 }
-const getLocalStorage = (token = []) => {
+const getLocalStorage = (token = '') => {
     const data = JSON.stringify(token);
     console.log("thakur", data)
     localStorage.setItem('token', data);

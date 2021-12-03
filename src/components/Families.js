@@ -2,15 +2,15 @@ import React from 'react'
 import { useEffect } from 'react'
 import { getProducts } from '../action'
 import { useDispatch, useSelector } from 'react-redux'
-import { ProductsRequest } from '../thunk/Products'
+import { FamiliesRequest } from '../thunk/Families'
 import { Table } from 'react-bootstrap'
-export const Products = () => {
+export const Families = () => {
 
-    const selector = useSelector((state) => state.Products.product)
+    const selector = useSelector((state) => state.Families.families)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ProductsRequest());
+        dispatch(FamiliesRequest());
 
     }, [])
 
@@ -24,10 +24,10 @@ export const Products = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {selector.map((product) => (
+                    {selector.map((family) => (
                         <tr>
-                            <td>{product.id}</td>
-                            <td>{product.name}</td>
+                            <td>{family.id}</td>
+                            <td>{family.name}</td>
                         </tr>
                     ))}
                 </tbody>

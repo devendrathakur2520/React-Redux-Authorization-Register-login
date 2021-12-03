@@ -1,16 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { getProducts } from '../action'
 import { useDispatch, useSelector } from 'react-redux'
-import { ProductsRequest } from '../thunk/Products'
+import { TransactionRequest } from '../thunk/Transaction'
 import { Table } from 'react-bootstrap'
-export const Products = () => {
+export const Transaction = () => {
 
-    const selector = useSelector((state) => state.Products.product)
+    const selector = useSelector((state) => state.Transaction.transaction)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ProductsRequest());
+        dispatch(TransactionRequest());
 
     }, [])
 
@@ -20,14 +19,18 @@ export const Products = () => {
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Products</th>
+                        <th>Cost</th>
+                        <th>Quantity</th>
+                        <th>ProductId</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {selector.map((product) => (
+                    {selector.map((transaction) => (
                         <tr>
-                            <td>{product.id}</td>
-                            <td>{product.name}</td>
+                            <td>{transaction.id}</td>
+                            <td>{transaction.cost}</td>
+                            <td>{transaction.quantity}</td>
+                            <td>{transaction.productId}</td>
                         </tr>
                     ))}
                 </tbody>
