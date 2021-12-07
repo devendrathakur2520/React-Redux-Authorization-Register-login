@@ -17,13 +17,13 @@ export const Dashboard = () => {
     return (<>
       
         <div>
-            <Link className="btn btn-primary">LogOut</Link>
+            <p className="text-left"><Link className="btn btn-primary" to="RegistrationForm"  >LogOut</Link></p>
             <Router>
                 <div>
                     <nav>
                         <ul>
                             <li>
-                                <Link to="/Products">Products</Link>
+                                <Link to="/Products" >Products</Link>
                             </li>
                             <li>
                                 <Link to="/Location">Locations</Link>

@@ -8,13 +8,17 @@ const client = axios.create({
 });
 let token = JSON.parse(localStorage.getItem('token'))
 //let strtoken=JSON.stringify(token)
-// console.log("dev",strtoken)
+console.log("dev", token)
 client.defaults.headers.common['Authorization'] = `Bearer ${token} `;
 
-export const ProductsRequest = () => async (dispatch) => {
+export const ProductsRequest = (prevFilters) => async (dispatch) => {
   try {
-    const response = await client.get('/products');
-    dispatch(getProducts(response.data));
+
+    const params = ({
+      _limit: prevFilters.limit,
+    })
+    const response = await client.get('/products' ,{params});
+    dispatch(getProducts({records:response.data}));
     console.log(response.data)
   } catch (err) {
     // logs the error whatever error occured in try block

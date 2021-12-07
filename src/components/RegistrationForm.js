@@ -29,9 +29,9 @@ function RegistrationForm() {
       <div className="text-center">
         <h1 className="text-center"> Registration Form </h1>
         Email:
-        <input type="text" name="email" value={email} onChange={handleChange} /><br /><br />
+        <input type="text" name="email" value={email} onChange={handleChange} placeholder="Enter Email" /><br /><br />
         Password:
-        <input type="password" name="password" value={password} onChange={handleChange} /><br /><br />
+        <input type="password" name="password" value={password} onChange={handleChange} placeholder="Enter Password" /><br /><br />
         <Button type="submit">submit</Button>
       </div>
     </Form>

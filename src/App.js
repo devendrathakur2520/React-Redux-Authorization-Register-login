@@ -27,7 +27,7 @@ function App() {
             </nav>
 
             <Switch>
-              <Route path="/RegistrationForm">
+              <Route exact path="/RegistrationForm">
                 <RegistrationForm />
               </Route>
               <Route path="/LoginForm">
