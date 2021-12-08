@@ -16,9 +16,10 @@ export const ProductsRequest = (prevFilters) => async (dispatch) => {
 
     const params = ({
       _limit: prevFilters.limit,
+      _page: prevFilters.page
     })
-    const response = await client.get('/products' ,{params});
-    dispatch(getProducts({records:response.data}));
+    const response = await client.get('/products', { params });
+    dispatch(getProducts({ records: response.data }));
     console.log(response.data)
   } catch (err) {
     // logs the error whatever error occured in try block

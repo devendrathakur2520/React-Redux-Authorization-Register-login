@@ -15,12 +15,15 @@ export const Products = () => {
         dispatch(setProductsFilters({ [name]: value }));
         console.log("filters", filters.limit)
     };
+    const handlePageChange = (acc) => {
+        dispatch(setProductsFilters({ page: acc + filters.page }));
+      };
     useEffect(() => {
         const getProduct = () => {
             dispatch(ProductsRequest(filters));
         }
         getProduct();
-    }, [filters.limit])
+    }, [filters.limit,filters.page])
 
     return (
         <>
@@ -33,7 +36,8 @@ export const Products = () => {
                     <option value={20}>20</option>
                 </select>
 
-
+                <button disabled={filters.page === 1} onClick={() => handlePageChange(-1)}>Prev</button>
+      <button disabled={filters.page === filters.pages} onClick={() => handlePageChange(1)}>Next</button>
             </div>
             <Table striped bordered hover size="sm">
                 <thead>

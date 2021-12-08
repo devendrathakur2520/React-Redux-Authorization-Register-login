@@ -1,23 +1,27 @@
 import { SET_TOKEN } from "../action";
 
+const getTokenFromLocalStorage = () => {
+    let getToken = localStorage.getItem("token") || "";
+    return getToken;
+};
+
 const initialState = {
-    token: '',
+    token: getTokenFromLocalStorage(),
 }
-const getLocalStorage = (token = '') => {
-    const data = JSON.stringify(token);
-    console.log("thakur", data)
-    localStorage.setItem('token', data);
-}
+// const getLocalStorage = (token = '') => {
+//     const data = JSON.stringify(token);
+//     console.log("thakur", data)
+//     localStorage.setItem('token', data);
+// }
 export default function Token(state = initialState, action) {
 
     switch (action.type) {
         case SET_TOKEN:
-            const token = [...state.token, action.payload]
-            getLocalStorage(token);
             return {
-                token,
-
+                state,
+                ...action.payload
             }
+
         default:
             return state;
     }

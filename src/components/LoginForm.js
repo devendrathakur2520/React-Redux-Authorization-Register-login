@@ -8,7 +8,7 @@ import { useHistory } from "react-router";
 function LoginForm() {
   const dispatch = useDispatch();
   const loginData = useSelector((state) => state.Login.data)
-  const ResponseStatus = useSelector((state) => state.Login.status)
+  //const ResponseStatus = useSelector((state) => state.Login.status)
   const history = useHistory();
   const { email, password } = loginData;
   const handleChange = (e) => {
@@ -18,15 +18,16 @@ function LoginForm() {
   const submit = (e) => {
     e.preventDefault();
     dispatch(LoginDetails(loginData))
+    history.push("/Dashboard")
 
-    setTimeout(function () {
-      if (ResponseStatus === 200) {
-        history.push("/Dashboard")
-      }
-      else {
-        alert("incorrect password ")
-      }
-    }, 2000)
+    // setTimeout(function () {
+    //   if (ResponseStatus === 200) {
+    //     history.push("/Dashboard")
+    //   }
+    //   else {
+    //     alert("incorrect password ")
+    //   }
+    // }, 2000)
   }
 
   return (
